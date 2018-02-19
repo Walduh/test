@@ -2,6 +2,7 @@ package core;
 
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.model.*;
+import util.ALPHABET;
 import util.STATIC;
 import util.SheetsServiceUtil;
 
@@ -79,6 +80,22 @@ public class SheetIntegration {
                 else c +=1;
         }
         return c-1;
+    }
+
+    //ermittelt wie lang eine Zeile "row" ab der Spalte "collumn" auf dem sheet mit der ID "z" ist
+    public static int rowlength(String row, String collumn, String z) throws IOException {
+        int i = 0;
+        while (i < 26) {
+            String cellvalue = read(collumn,row,z);
+                if (cellvalue == "")
+                    break;
+                else {
+                    i +=1;
+                    collumn = ALPHABET.incrementletter(collumn,1);
+                }
+
+        }
+        return i-1;
     }
 
 }

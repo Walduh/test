@@ -15,13 +15,13 @@ public class ALPHABET {
     public static String incrementletter(String start, int x) {
         int i = 0;
         for (int j = 0; j < 25 ; j++) {
-            System.out.print(j);
+            //System.out.print(j);
             if (alphabet.get(j) == start)
                 i = j+x;
 
         }
         return alphabet.get(i);
     }
-    
+
 
 }

@@ -47,6 +47,8 @@ public class Main {
             addCommands();
 
             //System.out.print(""+SheetIntegration.columnlentgh("A",1)+"\n");
+            SheetIntegration.read("A","1",STATIC.STRUKTUREN);
+            System.out.print(""+(SheetIntegration.rowlength("1","A",STATIC.STRUKTUREN))+"\n");
 
 
 
