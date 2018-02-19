@@ -81,15 +81,4 @@ public class SheetIntegration {
         return c-1;
     }
 
-    public static int rowlentgh(String row, int c, String z) throws IOException {
-        while (c < 999) {
-            //String collumn = String.valueOf(c);
-            //String cellvalue = read(collumn,row,z);
-            //if (cellvalue == "")
-             //   break;
-            //else c +=1;
-        }
-        return c-1;
-    }
-
 }

@@ -22,7 +22,6 @@ public class ALPHABET {
         }
         return alphabet.get(i);
     }
-
-    public static String number
+    
 
 }
