@@ -14,6 +14,8 @@ public class cmdCompliment implements Command {
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws IOException {
         event.getTextChannel().sendMessage(DATA.structurparser(args[0],DATA.strukturen.get(util.RANDOMIZER.randNumI(0,DATA.strukturen.size()-1)))).queue();
+        //System.out.print(DATA.structurparser(args[0],DATA.strukturen.get(util.RANDOMIZER.randNumI(0,DATA.strukturen.size()-1))));
+        //System.out.print(DATA.strukturen);
     }
 
     @Override

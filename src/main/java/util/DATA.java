@@ -8,7 +8,6 @@ import java.util.List;
 
 public class DATA {
 
-
     public static List<List<String>> strukturen = new ArrayList<>();
     public static List<List<String>> bausteine = new ArrayList<>();
 
@@ -34,11 +33,14 @@ public class DATA {
         DATA.strukturen.add(struktureInit);
         DATA.strukturen.add(struktureInit);
 
+        System.out.print("Dateninitialisiert \n");
+
     }
 
 
     public static void updatelist(List<List<String>> targetlist, String x, String y, String z) throws IOException {
         int i = 0;
+        targetlist.clear();
         while (i < 99) {
 
             if (SheetIntegration.read(x, y, z) != "") {

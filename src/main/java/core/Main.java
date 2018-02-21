@@ -6,9 +6,9 @@ import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.OnlineStatus;
+import net.dv8tion.jda.core.entities.Game;
 import util.DATA;
 import util.SECRETS;
-import util.STATIC;
 import javax.security.auth.login.LoginException;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -39,6 +39,8 @@ public class Main {
 
             builder.setStatus(OnlineStatus.ONLINE);
 
+            builder.setGame(Game.of(Game.GameType.DEFAULT,"hat schöne Augen"));
+
             addListeners();
             addCommands();
 
@@ -58,6 +60,7 @@ public class Main {
             CommandHandler.commands.put("read", new cmdRead());
             CommandHandler.commands.put("compliment", new cmdCompliment());
             CommandHandler.commands.put("update", new cmdUpdate());
+            CommandHandler.commands.put("player", new Music());
 
         }
 
@@ -75,5 +78,7 @@ public class Main {
                 e.printStackTrace();
             }
         }
+
+
 
 }
