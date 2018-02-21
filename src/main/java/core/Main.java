@@ -21,20 +21,16 @@ public class Main {
 
         public static void main(String[] Args) throws GeneralSecurityException, IOException {
 
-            //RuensTestEcke---------------------------------
+            DATA.init(); //lädt standard daten in strukturen und Bausteine
 
-            try {
-                SheetIntegration.setup();
-            } catch (GeneralSecurityException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            /*RuensTestEcke---------------------------------
 
-            DATA.updatelist(DATA.strukturen,"a","1",STATIC.STRUKTUREN);
-            DATA.updatelist(DATA.bausteine, "c","3",STATIC.BAUSTEINE);
+            sheetinit(); //startet verbindung zu googlesheet (wird auch von cmdUpdate aufgerufen!!!)
 
-            //RuensTestEcke ende-------------------------
+            //DATA.updatelist(DATA.strukturen,"a","1",STATIC.STRUKTUREN);
+            //DATA.updatelist(DATA.bausteine, "c","3",STATIC.BAUSTEINE);
+
+            //RuensTestEcke ende------------------------- */
 
             builder = new JDABuilder(AccountType.BOT);
 
@@ -70,5 +66,14 @@ public class Main {
             builder.addEventListener(new CommandListener());
         }
 
+        public static void sheetinit() {
+            try {
+                SheetIntegration.setup();
+            } catch (GeneralSecurityException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
 }

@@ -12,6 +12,30 @@ public class DATA {
     public static List<List<String>> strukturen = new ArrayList<>();
     public static List<List<String>> bausteine = new ArrayList<>();
 
+    public static void init() {
+
+        List <String> bausteinInit1 = new ArrayList<>();
+        List <String> bausteinInit2 = new ArrayList<>();
+
+       bausteinInit1.add("schöne");
+       bausteinInit2.add("Augen");
+
+       DATA.bausteine.add(bausteinInit1);
+       DATA.bausteine.add(bausteinInit2);
+
+       List <String> struktureInit = new ArrayList<>();
+
+       struktureInit.add("user");
+       struktureInit.add("hat");
+       struktureInit.add("*0");
+       struktureInit.add("*1");
+       struktureInit.add(".");
+
+        DATA.strukturen.add(struktureInit);
+        DATA.strukturen.add(struktureInit);
+
+    }
+
 
     public static void updatelist(List<List<String>> targetlist, String x, String y, String z) throws IOException {
         int i = 0;

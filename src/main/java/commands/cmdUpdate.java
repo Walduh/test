@@ -1,5 +1,6 @@
 package commands;
 
+import core.Main;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import util.DATA;
 import util.STATIC;
@@ -14,6 +15,7 @@ public class cmdUpdate implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws IOException {
+        Main.sheetinit();
         event.getTextChannel().sendMessage("Updating...").queue();
         DATA.updatelist(DATA.strukturen,"a","1", STATIC.STRUKTUREN);
         DATA.updatelist(DATA.bausteine, "c","3",STATIC.BAUSTEINE);
