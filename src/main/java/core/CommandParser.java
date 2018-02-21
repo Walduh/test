@@ -16,7 +16,6 @@ public class CommandParser {
         split = customSplit(beheaded);                                      //new method to get args
         String[] args = new String[split.size() - 1];
         split.subList(1, split.size()).toArray(args);
-
         return new commandContainer(raw, beheaded, splitBeheaded, invoke, args, event);
     }
 
@@ -31,7 +30,7 @@ public class CommandParser {
                 output.add(input.substring(i, input.length()));
                 break;
             } else {
-                if (input.substring(i, input.indexOf(" ")).startsWith("\"") == true && input.indexOf("\"", i + 1) != -1) {              //if " and at least one more " is found
+                if (input.substring(i, input.indexOf(" ", i)).startsWith("\"") == true && input.indexOf("\"", i + 1) != -1) {              //if " and at least one more " is found
                     output.add(input.substring(i + 1, input.indexOf("\"", i + 1)));                                                     //add arg between "
                     if (input.indexOf("\"", i + 1) == input.length() - 1) {                                                                  //if end reached, break
                         break;
