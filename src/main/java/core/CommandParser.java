@@ -13,15 +13,40 @@ public class CommandParser {
         String[] splitBeheaded = beheaded.split(" ");
         String invoke = splitBeheaded[0];
         ArrayList<String> split = new ArrayList<>();
-        for (String s : splitBeheaded) {
-            split.add(s);
-        }
+        split = customSplit(beheaded);                                      //new method to get args
         String[] args = new String[split.size() - 1];
         split.subList(1, split.size()).toArray(args);
 
         return new commandContainer(raw, beheaded, splitBeheaded, invoke, args, event);
     }
 
+    private ArrayList<String> customSplit(String input) {                       //takes beheaded, creates array list with args
+
+        int i = 0;      //current pos in string
+        ArrayList<String> output = new ArrayList<>();
+
+        while (true) {
+
+            if (input.indexOf(" ", i) == -1) {                  //last arg reached, add to list and break
+                output.add(input.substring(i, input.length()));
+                break;
+            } else {
+                if (input.substring(i, input.indexOf(" ")).startsWith("\"") == true && input.indexOf("\"", i + 1) != -1) {              //if " and at least one more " is found
+                    output.add(input.substring(i + 1, input.indexOf("\"", i + 1)));                                                     //add arg between "
+                    if (input.indexOf("\"", i + 1) == input.length() - 1) {                                                                  //if end reached, break
+                        break;
+                    } else {                                                                                                                               //else set i to new position
+                        i = input.indexOf("\"", i + 1) + 2;
+                    }
+                } else {                                                                                                                              //else add statement between " ", set i to new position
+                    output.add(input.substring(i, input.indexOf(" ", i)));
+                    i = input.indexOf(" ", i) + 1;
+                }
+            }
+        }
+
+        return output;
+    }
 
     public class commandContainer {
 
