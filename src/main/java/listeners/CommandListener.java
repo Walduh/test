@@ -18,9 +18,5 @@ public class CommandListener extends ListenerAdapter {
                 e.printStackTrace();
             }
         }
-
-
-
     }
-
 }

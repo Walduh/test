@@ -6,14 +6,13 @@ import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.OnlineStatus;
-import util.ALPHABET;
+import util.DATA;
 import util.SECRETS;
 import util.STATIC;
-
-
 import javax.security.auth.login.LoginException;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+
 
 
 public class Main {
@@ -22,8 +21,7 @@ public class Main {
 
         public static void main(String[] Args) throws GeneralSecurityException, IOException {
 
-            //System.out.print(ALPHABET.incrementletter("p",1));
-
+            //RuensTestEcke---------------------------------
 
             try {
                 SheetIntegration.setup();
@@ -33,8 +31,10 @@ public class Main {
                 e.printStackTrace();
             }
 
-            System.out.print(SheetIntegration.read("A","1", STATIC.STRUKTUREN));
-            System.out.print(SheetIntegration.read("A","1", STATIC.BAUSTEINE));
+            DATA.updatelist(DATA.strukturen,"a","1",STATIC.STRUKTUREN);
+            DATA.updatelist(DATA.bausteine, "c","3",STATIC.BAUSTEINE);
+
+            //RuensTestEcke ende-------------------------
 
             builder = new JDABuilder(AccountType.BOT);
 
@@ -45,13 +45,6 @@ public class Main {
 
             addListeners();
             addCommands();
-
-            //System.out.print(""+SheetIntegration.columnlentgh("A",1)+"\n");
-            SheetIntegration.read("A","1",STATIC.STRUKTUREN);
-            System.out.print(""+(SheetIntegration.rowlength("1","A",STATIC.STRUKTUREN))+"\n");
-
-
-
 
             try {
                 JDA jda = builder.buildBlocking();
@@ -68,6 +61,7 @@ public class Main {
             CommandHandler.commands.put("ping", new cmdPing());
             CommandHandler.commands.put("read", new cmdRead());
             CommandHandler.commands.put("compliment", new cmdCompliment());
+            CommandHandler.commands.put("update", new cmdUpdate());
 
         }
 

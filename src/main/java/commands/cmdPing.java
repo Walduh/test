@@ -11,12 +11,12 @@ public class cmdPing implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) {
-        event.getTextChannel().sendMessage("kys").queue();
+        event.getTextChannel().sendMessage("generic response").queue();
     }
 
     @Override
     public void executed(boolean sucess, MessageReceivedEvent event) {
-        System.out.print("Ping ausgeführt");
+        System.out.print("Ping ausgeführt \n");
     }
 
     @Override

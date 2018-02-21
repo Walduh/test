@@ -11,5 +11,13 @@ public class RANDOMIZER {
         System.out.print(lower+" - "+upper+": "+s+"\n");
         return s;
     }
+
+    public static Integer randNumI(int lower, int upper) {
+        Random r = new Random();
+        int n = r.nextInt(upper-lower+1) + lower;
+        System.out.print(lower+" - "+upper+": "+n+ "\n");
+        return n;
+    }
+
 }
 

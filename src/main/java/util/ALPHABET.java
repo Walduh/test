@@ -23,5 +23,17 @@ public class ALPHABET {
         return alphabet.get(i);
     }
 
+    public static Integer LetterToValue(String letter) {
+        int value = 1;
+        for (int i = 0; i <alphabet.size() ; i++) {
+            if (letter == alphabet.get(i))
+                value = i+1;
+        }
+        return value;
+    }
+
+    public static String ValueToLetter(int Value) {
+       return alphabet.get(Value-1);
+    }
 
 }

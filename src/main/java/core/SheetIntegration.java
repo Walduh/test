@@ -2,49 +2,19 @@ package core;
 
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.model.*;
-import util.ALPHABET;
-import util.STATIC;
 import util.SheetsServiceUtil;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
-import java.util.Arrays;
 import java.util.Collections;
+
 
 public class SheetIntegration {
 
     private static Sheets sheetsService;
-    private static String SPREADSHEET_ID = STATIC.BAUSTEINE;
-
 
     public static void setup() throws GeneralSecurityException, IOException {
         sheetsService = SheetsServiceUtil.getSheetsService();
-    }
-
-    public static void whenWriteSheet_thenReadSheetOk() throws IOException {
-        ValueRange body = new ValueRange()
-                .setValues(Arrays.asList(
-                        Arrays.asList("einBrot"),
-                        Arrays.asList("books", "30"),
-                        Arrays.asList("pens", "10"),
-                        Arrays.asList("Expenses February"),
-                        Arrays.asList("clothes", "20"),
-                        Arrays.asList("shoes", "5")));
-        UpdateValuesResponse result = sheetsService.spreadsheets().values()
-                .update(SPREADSHEET_ID, "A1", body)
-                .setValueInputOption("RAW")
-                .execute();
-    }
-
-
-    public void test() throws IOException {
-        Spreadsheet spreadSheet = new Spreadsheet().setProperties(
-                new SpreadsheetProperties().setTitle("My Spreadsheet"));
-        Spreadsheet result = sheetsService
-                .spreadsheets()
-                .create(spreadSheet).execute();
-
-        //assertThat(result.getSpreadsheetId()).isNotNull();
     }
 
     //liest den Zelleninhalt von Zelle x,y gibt ihn als string zurück
@@ -69,33 +39,5 @@ public class SheetIntegration {
         }
 
     }
-
-    //ermittlet wie viele Zellen unter "c" in Zeile "collumn" noch Strings enthalten --> upper für random
-    public static int columnlentgh(String collumn, int c, String z) throws IOException {
-        while (c < 999) {
-            String row = String.valueOf(c);
-            String cellvalue = read(collumn,row,z);
-                if (cellvalue == "")
-                   break;
-                else c +=1;
-        }
-        return c-1;
-    }
-
-    //ermittelt wie lang eine Zeile "row" ab der Spalte "collumn" auf dem sheet mit der ID "z" ist
-    public static int rowlength(String row, String collumn, String z) throws IOException {
-        int i = 0;
-        while (i < 26) {
-            String cellvalue = read(collumn,row,z);
-                if (cellvalue == "")
-                    break;
-                else {
-                    i +=1;
-                    collumn = ALPHABET.incrementletter(collumn,1);
-                }
-
-        }
-        return i-1;
-    }
-
 }
+

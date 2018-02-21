@@ -14,11 +14,8 @@ public class cmdRead implements Command {
 
     @Override
     public void action(String[] args, MessageReceivedEvent event) throws IOException {
-
         event.getTextChannel().sendMessage(SheetIntegration.read(args[0].toString(),args[1].toString(), STATIC.BAUSTEINE)).queue();
-
     }
-
 
     @Override
     public void executed(boolean sucess, MessageReceivedEvent event) {
